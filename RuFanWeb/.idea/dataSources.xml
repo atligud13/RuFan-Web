@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="815704894">
+    <data-source source="LOCAL" name="dataSource" uuid="6fbc2a29-3164-4980-b717-66b8a6f318b7">
+      <jdbc-driver>ejc8krf2</jdbc-driver>
+      <jdbc-url>net.sourceforge.jtds.jdbc.Driver</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
