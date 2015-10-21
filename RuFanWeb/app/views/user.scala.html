@@ -1,0 +1,39 @@
+@(userForm: Form[is.rufan.user.domain.UserRegistration])
+
+@import helper._
+
+@main("User", nav = "user") {
+    @helper.form(action = routes.UserController.update()) {
+        <fieldset>
+            <legend>Account information</legend>
+            @inputText(
+                userForm("username"),
+                '_label -> "Username",
+                '_help -> "Please enter your username.",
+                '_error -> userForm.globalError
+            )
+            @inputText(
+                userForm("name"),
+                '_label -> "Name",
+                '_help -> "Please provide your first name.",
+                '_error -> userForm.globalError
+            )
+            @inputText(
+                userForm("email"),
+                '_label -> "Email",
+                '_help -> "Enter a valid email address."
+            )
+            @inputPassword(
+                userForm("password"),
+                '_label -> "Password",
+                '_help -> "A password must be at least 6 characters. "
+            )
+            @inputPassword(
+                userForm("repeatPassword"),
+                '_label -> "Repeat password",
+                '_help -> "Please repeat your password again.",
+                '_error -> userForm.globalError
+            )
+        </fieldset>
+    }
+}
