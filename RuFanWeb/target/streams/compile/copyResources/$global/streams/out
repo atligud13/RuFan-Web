@@ -1,6 +1,0 @@
-[debug] Copy resource mappings: 
-[debug] 	(C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\conf\application.conf,C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\target\scala-2.11\classes\application.conf)
-[debug] 	(C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\conf\logback.xml,C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\target\scala-2.11\classes\logback.xml)
-[debug] 	(C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\conf\routes,C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\target\scala-2.11\classes\routes)
-[debug] 	(C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\conf\userapp.xml,C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\target\scala-2.11\classes\userapp.xml)
-[debug] 	(C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\conf\userdata.xml,C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\target\scala-2.11\classes\userdata.xml)
