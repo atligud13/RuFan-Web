@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: is.rufan.team.test.TestTeam
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 1.618 sec <<< FAILURE!
-testTeams(is.rufan.team.test.TestTeam)  Time elapsed: 0.014 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 2.218 sec <<< FAILURE!
+testTeams(is.rufan.team.test.TestTeam)  Time elapsed: 0.028 sec  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)

@@ -13,7 +13,7 @@
         <entry key="root">
           <value>
             <ProjectSettingsEntry>
-              <option name="confDir" value="C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\app" />
+              <option name="sourceDir" value="C:\Users\Atli\Documents\HR\Haust2015\RuFan\RuFanWeb\app" />
               <option name="templateImports">
                 <list>
                   <option value="models._" />
