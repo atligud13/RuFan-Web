@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="dataSource" uuid="6fbc2a29-3164-4980-b717-66b8a6f318b7">
-      <first-sync>true</first-sync>
-      <user-name>jdbc:jtds:sqlserver://hrnem.ru.is:1433</user-name>
-      <user-password>dfc2dfd9dfc2dfcbdfdedfc6dfc3dfcddfdfdfcedf9bdf99</user-password>
+    <data-source name="SQL Server - @hrnem.ru.is" uuid="2366b053-54ed-4181-a912-b8092125ba75">
+      <secret-storage>master_key</secret-storage>
+      <user-name>hshatligud13</user-name>
+      <schema-pattern>hshatligud13.*</schema-pattern>
+      <default-schemas>hshatligud13.*</default-schemas>
     </data-source>
   </component>
 </project>

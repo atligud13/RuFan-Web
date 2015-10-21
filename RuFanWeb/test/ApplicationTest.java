@@ -1,3 +1,4 @@
+/*
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ import static org.junit.Assert.*;
 * If you are interested in mocking a whole application, see the wiki for more details.
 *
 */
+/*
 public class ApplicationTest {
 
     @Test
@@ -40,6 +42,5 @@ public class ApplicationTest {
         assertEquals("text/html", contentType(html));
         assertTrue(contentAsString(html).contains("Your new application is ready."));
     }
-
-
 }
+*/

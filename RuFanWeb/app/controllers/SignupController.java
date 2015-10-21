@@ -1,5 +1,6 @@
 package controllers;
 
+import is.rufan.user.data.UserDuplicateException;
 import is.rufan.user.domain.UserRegistration;
 import is.rufan.user.service.UserService;
 import play.mvc.*;
@@ -58,7 +59,14 @@ public class SignupController extends UserController
     else
     {
       UserRegistration created = filledForm.get();
-      service.addUser(created);
+      try
+      {
+        service.addUser(created);
+      }
+      catch(UserDuplicateException e)
+      {
+        return badRequest(signup.render(filledForm));
+      }
       return ok(summary.render(created));
     }
   }
