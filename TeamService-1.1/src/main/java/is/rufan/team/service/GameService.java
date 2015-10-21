@@ -2,7 +2,10 @@ package is.rufan.team.service;
 
 import is.rufan.team.domain.Game;
 
+import java.util.List;
+
 public interface GameService
 {
-  public void addGame(Game game);
+  void addGame(Game game);
+  List<Game> getGames();
 }

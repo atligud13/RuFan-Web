@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TeamService
 {
-  public void addTeam(Team team) throws TeamServiceException;
-  public List<Team> getTeams();
-  public Team getTeamByAbbrivation(String abbrivation);
+  void addTeam(Team team) throws TeamServiceException;
+  List<Team> getTeams();
+  Team getTeamByAbbrivation(String abbrivation);
 }

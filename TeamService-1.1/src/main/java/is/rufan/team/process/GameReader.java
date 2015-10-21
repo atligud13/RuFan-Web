@@ -21,14 +21,10 @@ public class GameReader extends RuAbstractReader
 {
   public Object parse(String content)
   {
-    String tmp;
     List<Game> games = new ArrayList<Game>();
 
-    String fake="[{\"EventId\":1546789,\"StartTime\":\"2015-08-14T18:45:00\",\"Home\":{\"Id\":6144,\"Name\":\"Aston Villa\"},\"Away\":{\"Id\":6157,\"Name\":\"Manchester United\"},\"Venue\":{\"Id\":5194,\"Name\":\"Villa Park\"}},\n" +
-        "{\"EventId\":1546807,\"StartTime\":\"2015-08-15T11:45:00\",\"Home\":{\"Id\":7128,\"Name\":\"Southampton\"},\"Away\":{\"Id\":6149,\"Name\":\"Everton\"},\"Venue\":{\"Id\":5246,\"Name\":\"St. Mary's Stadium\"}},{\"EventId\":1546811,\"StartTime\":\"2015-08-15T14:00:00\",\"Home\":{\"Id\":7129,\"Name\":\"Sunderland\"},\"Away\":{\"Id\":7132,\"Name\":\"Norwich City\"},\"Venue\":{\"Id\":5210,\"Name\":\"Stadium Of Light\"}},{\"EventId\":1546815,\"StartTime\":\"2015-08-15T14:00:00\",\"Home\":{\"Id\":8248,\"Name\":\"Swansea City\"},\"Away\":{\"Id\":6151,\"Name\":\"Newcastle United\"},\"Venue\":{\"Id\":6132,\"Name\":\"Liberty Stadium\"}},{\"EventId\":1546818,\"StartTime\":\"2015-08-15T14:00:00\",\"Home\":{\"Id\":6154,\"Name\":\"Tottenham Hotspur\"},\"Away\":{\"Id\":8246,\"Name\":\"Stoke City\"},\"Venue\":{\"Id\":5211,\"Name\":\"White Hart Lane\"}},{\"EventId\":1546821,\"StartTime\":\"2015-08-15T14:00:00\",\"Home\":{\"Id\":6148,\"Name\":\"Watford\"},\"Away\":{\"Id\":7139,\"Name\":\"West Bromwich Albion\"},\"Venue\":{\"Id\":5569,\"Name\":\"Vicarage Road\"}},{\"EventId\":1546825,\"StartTime\":\"2015-08-15T14:00:00\",\"Home\":{\"Id\":6143,\"Name\":\"West Ham United\"},\"Away\":{\"Id\":7127,\"Name\":\"Leicester City\"},\"Venue\":{\"Id\":5212,\"Name\":\"Upton Park\"}},{\"EventId\":1546791,\"StartTime\":\"2015-08-16T12:30:00\",\"Home\":{\"Id\":7131,\"Name\":\"Crystal Palace\"},\"Away\":{\"Id\":6145,\"Name\":\"Arsenal\"},\"Venue\":{\"Id\":6122,\"Name\":\"Selhurst Park\"}},{\"EventId\":1546804,\"StartTime\":\"2015-08-16T15:00:00\",\"Home\":{\"Id\":6158,\"Name\":\"Manchester City\"},\"Away\":{\"Id\":6159,\"Name\":\"Chelsea\"},\"Venue\":{\"Id\":5435,\"Name\":\"Etihad Stadium\"}},{\"EventId\":1546793,\"StartTime\":\"2015-08-17T19:00:00\",\"Home\":{\"Id\":6140,\"Name\":\"Liverpool\"},\"Away\":{\"Id\":8260,\"Name\":\"Bournemouth\"},\"Venue\":{\"Id\":5204,\"Name\":\"Anfield\"}}]";
-
     // Root object
-    JSONArray jGames = (JSONArray)JSONValue.parse(fake);
+    JSONArray jGames = (JSONArray)JSONValue.parse(content);
 
     for (int i=0; i < jGames.size(); i++)
     {

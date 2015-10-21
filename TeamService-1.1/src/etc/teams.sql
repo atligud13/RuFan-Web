@@ -1,4 +1,4 @@
-drop table teams
+drop table teams;
 create table teams
 (
   teamid int primary key NOT NULL,
@@ -6,4 +6,4 @@ create table teams
   abbreviation varchar(10),
   displayname varchar(80),
   venueid int
-)
+);

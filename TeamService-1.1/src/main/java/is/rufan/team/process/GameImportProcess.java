@@ -1,6 +1,8 @@
 package is.rufan.team.process;
 
 import is.rufan.team.domain.Game;
+import is.rufan.team.service.GameService;
+import is.rufan.team.service.GameServiceException;
 import is.ruframework.process.RuAbstractProcess;
 import is.ruframework.reader.RuReadHandler;
 import is.ruframework.reader.RuReader;
@@ -14,6 +16,7 @@ import java.util.logging.Logger;
 
 public class GameImportProcess extends RuAbstractProcess implements RuReadHandler
 {
+  private GameService gameService;
   MessageSource msg;
   Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -21,6 +24,7 @@ public class GameImportProcess extends RuAbstractProcess implements RuReadHandle
   public void beforeProcess()
   {
     ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:gameapp.xml");
+    gameService = (GameService)applicationContext.getBean("gameService");
     msg = (MessageSource)applicationContext.getBean("messageSource");
     logger.info("processbefore: " + getProcessContext().getProcessName());
   }
@@ -46,6 +50,13 @@ public class GameImportProcess extends RuAbstractProcess implements RuReadHandle
   public void read(int count, Object object)
   {
     Game game = (Game)object;
-    System.out.println(game);
+    try
+    {
+      gameService.addGame(game);
+    }
+    catch(GameServiceException se)
+    {
+      logger.warning("Game id " + game.getGameId() + " not added " + se.getMessage());
+    }
   }
 }
