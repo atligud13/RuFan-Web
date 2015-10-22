@@ -1,10 +1,10 @@
-@(tournaments: ArrayList[is.rufan.player.domain.Player])
+@(tournaments: ArrayList[is.rufan.tournament.domain.Tournament])
 
 
 @main("Tournaments", nav="tournament") {
   <ul>
     @for(t <- tournaments) {
-      <li>@t.getFirstName()</li>
+      <li>@t.getName()</li>
     }
   </ul>
 }
