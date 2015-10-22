@@ -11,4 +11,5 @@ public interface TournamentDataGateway {
     void addTournament(Tournament tournament);
     Tournament getTournament(int tournamentId);
     List<Tournament> getTournaments();
+    List<Tournament> getActiveTournaments();
 }

@@ -28,14 +28,7 @@ public class TournamentController extends Controller
 
     public Result get() {
         TournamentService service = (TournamentService) ctx.getBean("tournamentService");
-        ArrayList<Tournament> tournamentList = (ArrayList<Tournament>) service.getTournaments();
-
-        ArrayList<Player> players = new ArrayList<Player>();
-        players.add(new Player(0, "Atli", "Gudlaugsson", 80, 80, new Date(), new Country(0, "Iceland", "ICE"), 0, new Position(0, "Forward", "F", 0)));
-        players.add(new Player(0, "Arnar", "Gudlaugsson", 80, 80, new Date(), new Country(0, "Iceland", "ICE"), 0, new Position(0, "Forward", "F", 0)));
-        players.add(new Player(0, "Anton", "Gudlaugsson", 80, 80, new Date(), new Country(0, "Iceland", "ICE"), 0, new Position(0, "Forward", "F", 0)));
-        players.add(new Player(0, "Bjarni", "Gudlaugsson", 80, 80, new Date(), new Country(0, "Iceland", "ICE"), 0, new Position(0, "Forward", "F", 0)));
-        players.add(new Player(0, "Thordis", "Gudlaugsson", 80, 80, new Date(), new Country(0, "Iceland", "ICE"), 0, new Position(0, "Forward", "F", 0)));
+        ArrayList<Tournament> tournamentList = (ArrayList<Tournament>) service.getActiveTournaments();
 
         return ok(tournaments.render(tournamentList));
     }

@@ -88,6 +88,11 @@ public class TournamentServiceData implements TournamentService {
         return tournamentDataGateway.getTournaments();
     }
 
+    public List<Tournament> getActiveTournaments()
+    {
+        return tournamentDataGateway.getActiveTournaments();
+    }
+
     public void addTournament(Tournament tournament)
     {
         tournamentDataGateway.addTournament(tournament);
