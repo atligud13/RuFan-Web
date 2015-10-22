@@ -11,6 +11,8 @@ POST       /login                   controllers.LoginController.login()
 GET        /logout                  controllers.LoginController.logout()
 GET        /user                    controllers.UserController.get()
 POST       /user                    controllers.UserController.update()
+GET        /tournaments             controllers.TournamentController.get()
+POST       /tournaments             controllers.TournamentController.post()
 
 
 # Map static resources from the /public folder to the /assets URL path
