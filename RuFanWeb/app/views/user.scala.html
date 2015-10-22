@@ -1,4 +1,4 @@
-@(userForm: Form[is.rufan.user.domain.UserRegistration])
+@(userForm: Form[ProfileViewModel])
 
 @import helper._
 
@@ -7,33 +7,44 @@
         <fieldset>
             <legend>Account information</legend>
             @inputText(
-                userForm("username"),
+                userForm("user.username"),
                 '_label -> "Username",
                 '_help -> "Please enter your username.",
                 '_error -> userForm.globalError
             )
             @inputText(
-                userForm("name"),
+                userForm("user.name"),
                 '_label -> "Name",
                 '_help -> "Please provide your first name.",
                 '_error -> userForm.globalError
             )
             @inputText(
-                userForm("email"),
+                userForm("user.email"),
                 '_label -> "Email",
                 '_help -> "Enter a valid email address."
             )
             @inputPassword(
-                userForm("password"),
+                userForm("user.password"),
                 '_label -> "Password",
                 '_help -> "A password must be at least 6 characters. "
             )
             @inputPassword(
-                userForm("repeatPassword"),
+                userForm("user.repeatPassword"),
                 '_label -> "Repeat password",
                 '_help -> "Please repeat your password again.",
                 '_error -> userForm.globalError
             )
         </fieldset>
+        <fieldset>
+            <legend>Favourite team</legend>
+            @select(
+                userForm("favTeam"),
+                options(),
+                '_label -> "Favourite team",
+                '_default -> "-- Select team --",
+                'id -> "favTeam"
+            )
+        </fieldset>
     }
+    <script src="@routes.Assets.versioned("javascripts/teams.js")"></script>
 }
