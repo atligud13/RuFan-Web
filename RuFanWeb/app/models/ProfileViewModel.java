@@ -11,8 +11,13 @@ public class ProfileViewModel {
     public long favTeam;
     // Credit card data
     public String type;
-    @Pattern("\\d{16}")
+
+    @Pattern(value = "^$|\\d{16}", message = "Enter 16 letter CC number without spaces")
     public String cardNumber;
+
+    @Max(12)
     public int expirationMonth;
+
+    @Min(2010)
     public int expirationYear;
 }

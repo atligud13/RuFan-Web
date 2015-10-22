@@ -1,0 +1,20 @@
+@(field: play.api.data.Field, options: Seq[(String,String)], args: (Symbol,Any)*)(implicit handler: FieldConstructor, lang: play.api.i18n.Lang)
+
+@import helper._
+
+@getAsTuple(x : Any) = @{
+  x match {
+    case (value: String, text: String) => (value, text)
+    case _ => ("-1", "Select")
+  }
+}
+
+@input(field, args:_*) { (id, name, value, htmlArgs) =>
+  <select id="@id" name="@name" @toHtmlArgs(htmlArgs)>
+
+
+    @args.toMap.get('_default).map { dv =>
+      <option class="blank" value="@getAsTuple(dv)._1">@getAsTuple(dv)._2</option>
+    }
+  </select>
+}

@@ -37,11 +37,11 @@
         </fieldset>
         <fieldset>
             <legend>Favourite team</legend>
-            @select(
+            @tupleSelect(
                 userForm("favTeam"),
                 options(),
                 '_label -> "Favourite team",
-                '_default -> "-- Select team --",
+                '_default -> ("-1" -> "-- Select team --"),
                 'id -> "favTeam"
             )
         </fieldset>
@@ -65,9 +65,9 @@
                 </dt>
                 <dd>
                     <span>Month: </span>
-                    <input id="expirationMonth" type="number" value="" name="expirationMonth" class="expiration_field"></input>
+                    <input id="expirationMonth" type="number" value="" name="expirationMonth" class="expiration_field"/>
                     <span>Year: </span>
-                    <input id="expirationYear" type="number" value="" name="expirationYear" class="expiration_field"></input>
+                    <input id="expirationYear" type="number" value="" name="expirationYear" class="expiration_field"/>
                 </dd>
             </dl>
         </fieldset>
