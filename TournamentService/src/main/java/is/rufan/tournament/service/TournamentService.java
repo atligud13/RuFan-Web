@@ -10,5 +10,6 @@ import java.util.List;
 public interface TournamentService {
     Tournament getTournament(int tournamentId);
     List<Tournament> getTournaments();
+    List<Tournament> getActiveTournaments();
     void addTournament(Tournament tournament);
 }
