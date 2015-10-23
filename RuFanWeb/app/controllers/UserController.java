@@ -7,6 +7,7 @@ import models.ProfileViewModel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import play.data.*;
+import play.data.validation.Validation;
 import play.mvc.*;
 import is.rufan.user.service.UserService;
 
@@ -17,10 +18,10 @@ import static play.data.Form.*;
 public class UserController extends Controller
 {
   protected ApplicationContext ctx = new FileSystemXmlApplicationContext("/conf/userapp.xml");
+  protected UserService service = (UserService) ctx.getBean("userService");
   static Form<ProfileViewModel> userForm = form(ProfileViewModel.class);
 
   public Result get() {
-      UserService service = (UserService) ctx.getBean("userService");
       String username = session("username");
       User currentUser = service.getUserByUsername(username);
 
@@ -39,6 +40,23 @@ public class UserController extends Controller
   }
 
   public Result update() {
+      Form<ProfileViewModel> filledForm = userForm.bindFromRequest();
+      
+      //validateForm(filledForm);
+
+      if (filledForm.hasErrors())
+      {
+          return badRequest(user.render(filledForm));
+      }
       return ok();
+  }
+
+  private void validateForm(Form<ProfileViewModel> filledForm) {
+      ProfileViewModel model = filledForm.get();
+      System.out.println(model.favTeam);
+      String cardNumber = (String) filledForm.field("cardNumber").value();
+      if (!cardNumber.equals("") && !cardNumber.matches("\\d{16}")) {
+          filledForm.reject("cardNumber", "Card number should be 16 digits");
+      }
   }
 }

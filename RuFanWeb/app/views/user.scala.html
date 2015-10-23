@@ -37,14 +37,44 @@
         </fieldset>
         <fieldset>
             <legend>Favourite team</legend>
-            @select(
+            @tupleSelect(
                 userForm("favTeam"),
                 options(),
                 '_label -> "Favourite team",
-                '_default -> "-- Select team --",
+                '_default -> ("-1" -> "-- Select team --"),
                 'id -> "favTeam"
             )
         </fieldset>
+        <fieldset>
+            <legend>Credit Card information</legend>
+            @select(
+                userForm("type"),
+                options(Seq("VISA", "MasterCard")),
+                '_label -> "Card type",
+                '_default -> "-- Select type --"
+            )
+            @inputText(
+                userForm("cardNumber"),
+                '_label -> "Card number",
+                '_error -> userForm.globalError
+            )
+            <!-- Couldn't find helper for this -->
+            <dl id="expiration_field">
+                <dt>
+                    <label for="expirationMonth">Expiration date</label>
+                </dt>
+                <dd>
+                    <span>Month: </span>
+                    <input id="expirationMonth" type="number" value="" name="expirationMonth" class="expiration_field"/>
+                    <span>Year: </span>
+                    <input id="expirationYear" type="number" value="" name="expirationYear" class="expiration_field"/>
+                </dd>
+            </dl>
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn btn-primary" value="Save">
+        </div>
     }
     <script src="@routes.Assets.versioned("javascripts/teams.js")"></script>
 }
