@@ -1,4 +1,4 @@
-@(userForm: Form[ProfileViewModel])
+@(userForm: Form[is.rufan.user.domain.UserRegistration])
 
 @import helper._
 
@@ -6,24 +6,25 @@
     @helper.form(action = routes.UserController.update()) {
         <fieldset>
             <legend>Account information</legend>
+            <input type="hidden" id="username" name="username" value="@userForm("username").value()" />
             @inputText(
-                userForm("user.name"),
+                userForm("name"),
                 '_label -> "Name",
                 '_help -> "Please provide your first name.",
                 '_error -> userForm.globalError
             )
             @inputText(
-                userForm("user.email"),
+                userForm("email"),
                 '_label -> "Email",
                 '_help -> "Enter a valid email address."
             )
             @inputPassword(
-                userForm("user.password"),
+                userForm("password"),
                 '_label -> "Password",
                 '_help -> "A password must be at least 6 characters. "
             )
             @inputPassword(
-                userForm("user.repeatPassword"),
+                userForm("repeatPassword"),
                 '_label -> "Repeat password",
                 '_help -> "Please repeat your password again.",
                 '_error -> userForm.globalError
@@ -32,7 +33,7 @@
         <fieldset>
             <legend>Favourite team</legend>
             @tupleSelect(
-                userForm("favTeam"),
+                userForm("favoriteTeamId"),
                 options(),
                 '_label -> "Favourite team",
                 '_default -> ("-1" -> "-- Select team --"),
@@ -42,13 +43,13 @@
         <fieldset>
             <legend>Credit Card information</legend>
             @select(
-                userForm("type"),
+                userForm("creditCardType"),
                 options(Seq("VISA", "MasterCard")),
                 '_label -> "Card type",
                 '_default -> "-- Select type --"
             )
             @inputText(
-                userForm("cardNumber"),
+                userForm("creditCardNumber"),
                 '_label -> "Card number",
                 '_error -> userForm.globalError
             )
@@ -59,13 +60,13 @@
                 </dt>
                 <dd>
                     <span>Month: </span>
-                    <select id="expirationMonth" name="expirationMonth">
+                    <select id="creditCardExpirationMonth" name="creditCardExpirationMonth">
                         @for(i <- 1 to 12) {
                             <option value="@i">@i</option>
                         }
                     </select>
                     <span>Year: </span>
-                    <select id="expirationYear" name="expirationYear">
+                    <select id="creditCardExpirationYear" name="creditCardExpirationYear">
                         @for(i <- 2010 to 2030) {
                             <option value="@i">@i</option>
                         }
