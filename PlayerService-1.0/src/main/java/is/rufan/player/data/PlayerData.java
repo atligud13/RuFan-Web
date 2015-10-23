@@ -61,7 +61,7 @@ public class PlayerData extends RuData implements PlayerDataGateway
 
   public Player getPlayer(int playerid)
   {
-    String sql = "select * from players where id = ?";
+    String sql = "select * from players where playerid = ?";
     JdbcTemplate queryPlayer= new JdbcTemplate(getDataSource());
     Player player = queryPlayer.queryForObject(sql, new Object[] { playerid },
         new PlayerRowMapper());

@@ -27,8 +27,8 @@ public class UserServiceData implements UserService
     {
       UserService userService = new UserServiceData();
       
-      User atli = new User(1, "atli cool", "atlicoolboy", "atlicool@atli.is", "123456");
-
+      User atli = new User(2, "atli cool", "atlicoolboy", "atlicool@atli.is", "123456");
+      userService.addUser(atli);
       try
       {
         userService.updateUser(atli);
@@ -37,10 +37,20 @@ public class UserServiceData implements UserService
       {
         System.out.println("Atli not found");
       }
+
+      User atli2 = new User(2, "Atli", "atligud", "atli@ru.is", "123456", 6140, "585858-5858", "Mastercard", 10, 2016);
+      try
+      {
+        userService.updateUser(atli2);
+      }
+      catch(UserNotFoundException e)
+      {
+        System.out.println("Atli2 not found");
+      }
     }
     catch(RuException e)
     {
-
+      System.out.println("Could not update");
     }
 
     System.out.println("Updating atli worked!");

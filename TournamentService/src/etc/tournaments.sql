@@ -1,7 +1,7 @@
 drop table tournaments;
 create table tournaments
 (
-  id int primary key NOT NULL,
+  id int primary key NOT NULL IDENTITY ,
   name varchar(80),
   active bit,
   startdate datetime,
