@@ -7,6 +7,11 @@ public class User
   protected String username;
   protected String email;
   protected String password;
+  protected int favoriteTeamId;
+  protected String creditCardNumber;
+  protected String creditCardType;
+  protected int creditCardExpirationYear;
+  protected int creditCardExpirationMonth;
 
   public User()
   {
@@ -29,11 +34,25 @@ public class User
     this.password = password;
   }
 
+  public User(int id, String name, String username, String email, String password, int favoriteTeamId, String creditCardNumber, String creditCardType, int creditCardExpirationMonth, int creditCardExpirationYear)
+  {
+    this.id = id;
+    this.name = name;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.favoriteTeamId = favoriteTeamId;
+    this.creditCardExpirationMonth = creditCardExpirationMonth;
+    this.creditCardExpirationYear = creditCardExpirationYear;
+    this.creditCardNumber = creditCardNumber;
+    this.creditCardType = creditCardType;
+  }
 
   public int getId()
   {
     return id;
   }
+
 
   public void setId(int id)
   {
@@ -78,6 +97,46 @@ public class User
   public void setPassword(String password)
   {
     this.password = password;
+  }
+
+  public int getFavoriteTeamId() {
+    return favoriteTeamId;
+  }
+
+  public void setFavoriteTeamId(int favoriteTeamId) {
+    this.favoriteTeamId = favoriteTeamId;
+  }
+
+  public String getCreditCardNumber() {
+    return creditCardNumber;
+  }
+
+  public void setCreditCardNumber(String creditCardNumber) {
+    this.creditCardNumber = creditCardNumber;
+  }
+
+  public String getCreditCardType() {
+    return creditCardType;
+  }
+
+  public void setCreditCardType(String creditCardType) {
+    this.creditCardType = creditCardType;
+  }
+
+  public int getCreditCardExpirationYear() {
+    return creditCardExpirationYear;
+  }
+
+  public void setCreditCardExpirationYear(int creditCardExpirationYear) {
+    this.creditCardExpirationYear = creditCardExpirationYear;
+  }
+
+  public int getCreditCardExpirationMonth() {
+    return creditCardExpirationMonth;
+  }
+
+  public void setCreditCardExpirationMonth(int creditCardExpirationMonth) {
+    this.creditCardExpirationMonth = creditCardExpirationMonth;
   }
 
   @Override

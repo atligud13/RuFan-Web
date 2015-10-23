@@ -17,6 +17,12 @@ public class UserRowMapper implements RowMapper<User>
     user.setUsername(rs.getString("username"));
     user.setEmail(rs.getString("email"));
     user.setPassword(rs.getString("password"));
+    user.setFavoriteTeamId(rs.getInt("favoriteteamid"));
+    user.setCreditCardNumber(rs.getString("creditcardnumber"));
+    user.setCreditCardType(rs.getString("creditcardtype"));
+    user.setCreditCardExpirationMonth(rs.getInt("creditcardexpirationmonth"));
+    user.setCreditCardExpirationYear(rs.getInt("creditcardexpirationyear"));
+
     return user;
   }
 }

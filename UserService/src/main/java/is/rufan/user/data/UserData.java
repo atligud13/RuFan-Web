@@ -26,6 +26,11 @@ public class UserData extends RuData implements UserDataGateway
     parameters.put("username", user.getUsername());
     parameters.put("email", user.getEmail());
     parameters.put("password", user.getPassword());
+    parameters.put("favoriteteamid", user.getFavoriteTeamId());
+    parameters.put("creditcardnumber", user.getCreditCardNumber());
+    parameters.put("creditcardtype", user.getCreditCardType());
+    parameters.put("creditcardexpirationyear", user.getCreditCardExpirationYear());
+    parameters.put("creditcardexpirationmonth", user.getCreditCardExpirationMonth());
 
     int returnKey = 0;
     try
