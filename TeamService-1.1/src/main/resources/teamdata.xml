@@ -27,5 +27,7 @@
 
     <bean id="teamData" class="is.rufan.team.data.TeamData"/>
     <bean id="venueData" class="is.rufan.team.data.VenueData"/>
+    <bean id="playerData" class="is.rufan.player.data.PlayerData" />
+    <bean id="fantasyTeamData" class="is.rufan.team.data.FantasyTeamData"/>
 
 </beans>

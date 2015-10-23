@@ -20,7 +20,6 @@ public class TeamServiceData implements TeamService
     factory = RuDataAccessFactory.getInstance("teamdata.xml");
     teamDataGateway = (TeamDataGateway) factory.getDataAccess("teamData");
     venueDataGateway = (VenueDataGateway) factory.getDataAccess("venueData");
-
   }
 
   public void addTeam(Team team) throws TeamServiceException

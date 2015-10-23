@@ -51,10 +51,10 @@ public class TournamentServiceData implements TournamentService {
             Date endDate5 = cal.getTime();
 
             /* Creating mock tournament */
-            tournaments.add(new Tournament(1, "EPL $1000 GTD", true,
+            tournaments.add(new Tournament(3, "EPL $1000 GTD", true,
                     startDate1, endDate1, "English Premier League", 100,
                     10, 1000));
-            tournaments.add(new Tournament(2, "EPL $750 GTD", true,
+            tournaments.add(new Tournament(3, "EPL $750 GTD", true,
                     startDate2, endDate2, "English Premier League", 100,
                     7, 750));
             tournaments.add(new Tournament(3, "EPL $300 GTD", true,
@@ -63,7 +63,7 @@ public class TournamentServiceData implements TournamentService {
             tournaments.add(new Tournament(4, "EPL $1000 All Pick FFA", true,
                     startDate4, endDate4, "English Premier League", 50,
                     10, 1000));
-            tournaments.add(new Tournament(5, "EPL $1000 GTD", true,
+            tournaments.add(new Tournament(5, "EPL $1000 GTD", false,
                     startDate5, endDate5, "English Premier League", 100,
                     10, 1000));
 

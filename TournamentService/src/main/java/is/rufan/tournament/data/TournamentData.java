@@ -18,10 +18,10 @@ public class TournamentData extends RuData implements TournamentDataGateway {
     public void addTournament(Tournament tournament) {
         SimpleJdbcInsert insertTournament =
                 new SimpleJdbcInsert(getDataSource())
-                        .withTableName("tournaments");
+                        .withTableName("tournaments")
+                        .usingGeneratedKeyColumns("id");
 
-        Map<String, Object> tParameters = new HashMap<String, Object>(8);
-        tParameters.put("id", tournament.getTournamentId());
+        Map<String, Object> tParameters = new HashMap<String, Object>(7);
         tParameters.put("name", tournament.getName());
         tParameters.put("active", tournament.isActive());
         tParameters.put("startdate", tournament.getStartDate());
