@@ -7,12 +7,6 @@
         <fieldset>
             <legend>Account information</legend>
             @inputText(
-                userForm("user.username"),
-                '_label -> "Username",
-                '_help -> "Please enter your username.",
-                '_error -> userForm.globalError
-            )
-            @inputText(
                 userForm("user.name"),
                 '_label -> "Name",
                 '_help -> "Please provide your first name.",
@@ -65,9 +59,17 @@
                 </dt>
                 <dd>
                     <span>Month: </span>
-                    <input id="expirationMonth" type="number" value="" name="expirationMonth" class="expiration_field"/>
+                    <select id="expirationMonth" name="expirationMonth">
+                        @for(i <- 1 to 12) {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
                     <span>Year: </span>
-                    <input id="expirationYear" type="number" value="" name="expirationYear" class="expiration_field"/>
+                    <select id="expirationYear" name="expirationYear">
+                        @for(i <- 2010 to 2030) {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
                 </dd>
             </dl>
         </fieldset>

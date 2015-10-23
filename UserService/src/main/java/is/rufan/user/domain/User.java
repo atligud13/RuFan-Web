@@ -2,6 +2,7 @@ package is.rufan.user.domain;
 
 public class User
 {
+
   protected int id;
   protected String name;
   protected String username;
