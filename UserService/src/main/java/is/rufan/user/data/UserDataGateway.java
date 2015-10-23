@@ -6,6 +6,7 @@ import is.ruframework.data.RuDataAccess;
 public interface UserDataGateway extends RuDataAccess
 {
   public int create(User user);
+  void updateUser(User user) throws UserNotFoundException;
   public User find(int userid);
   public User find(String username);
 }

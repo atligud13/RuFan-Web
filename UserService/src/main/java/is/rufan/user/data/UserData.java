@@ -7,6 +7,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,7 +73,32 @@ public class UserData extends RuData implements UserDataGateway
     {
       return null;
     }
+
   }
 
+  public void updateUser(User user) throws UserNotFoundException
+  {
+    String updateTableSQL = "update users SET name = ?, username = ?, email = ?, password = ?  where id = ?";
+    try
+    {
+      PreparedStatement preparedStatement = getDataSource().getConnection().prepareStatement(updateTableSQL);
+      preparedStatement.setString(1, user.getName());
+      preparedStatement.setString(2, user.getUsername());
+      preparedStatement.setString(3, user.getEmail());
+      preparedStatement.setString(4, user.getPassword());
+      preparedStatement.setInt(5, user.getId());
+
+      // execute update SQL stetement
+      preparedStatement.executeUpdate();
+
+      System.out.println("Record is updated to users table!");
+
+    }
+    catch(SQLException e)
+    {
+      log.warning("Could not update user");
+      throw new UserNotFoundException();
+    }
+  }
 
 }

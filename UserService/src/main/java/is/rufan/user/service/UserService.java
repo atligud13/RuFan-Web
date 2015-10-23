@@ -5,7 +5,8 @@ import is.rufan.user.domain.User;
 
 public interface UserService
 {
-  public int addUser(User user);
-  public User getUser(int id);
-  public User getUserByUsername(String username);
+  int addUser(User user);
+  void updateUser(User user);
+  User getUser(int id);
+  User getUserByUsername(String username);
 }
