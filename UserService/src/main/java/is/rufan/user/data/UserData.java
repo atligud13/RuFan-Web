@@ -83,7 +83,16 @@ public class UserData extends RuData implements UserDataGateway
 
   public void updateUser(User user) throws UserNotFoundException
   {
-    String updateTableSQL = "update users SET name = ?, username = ?, email = ?, password = ?  where id = ?";
+    /*
+    favoriteteamid int,
+    creditcardnumber varchar(128),
+    creditcardtype varchar(32),
+    creditcardexpirationyear int,
+    creditcardexpirationmonth int
+     */
+    String updateTableSQL = "update users SET name = ?, username = ?, email = ?, password = ?, " +
+                            "favoriteteamid = ?, creditcardnumber = ?, creditcardtype = ?, " +
+                            "creditcardexpirationyear = ?, creditcardexpirationmonth = ?  where id = ?";
     try
     {
       PreparedStatement preparedStatement = getDataSource().getConnection().prepareStatement(updateTableSQL);
@@ -91,7 +100,12 @@ public class UserData extends RuData implements UserDataGateway
       preparedStatement.setString(2, user.getUsername());
       preparedStatement.setString(3, user.getEmail());
       preparedStatement.setString(4, user.getPassword());
-      preparedStatement.setInt(5, user.getId());
+      preparedStatement.setInt(5, user.getFavoriteTeamId());
+      preparedStatement.setString(6, user.getCreditCardNumber());
+      preparedStatement.setString(7, user.getCreditCardType());
+      preparedStatement.setInt(8, user.getCreditCardExpirationYear());
+      preparedStatement.setInt(9, user.getCreditCardExpirationMonth());
+      preparedStatement.setInt(10, user.getId());
 
       // execute update SQL stetement
       preparedStatement.executeUpdate();
