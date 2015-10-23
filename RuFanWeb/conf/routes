@@ -13,6 +13,7 @@ GET        /user                    controllers.UserController.get()
 POST       /user                    controllers.UserController.update()
 GET        /tournaments             controllers.TournamentController.get()
 POST       /tournaments             controllers.TournamentController.post()
+GET        /fanteam                 controllers.TeamController.getUserTeam()
 
 # API
 GET        /api/teams               controllers.api.TeamController.getTeams()

@@ -6,6 +6,7 @@
     @helper.form(action = routes.UserController.update()) {
         <fieldset>
             <legend>Account information</legend>
+            <input type="hidden" id="id" name="id" value="@userForm("id").value()" />
             <input type="hidden" id="username" name="username" value="@userForm("username").value()" />
             @inputText(
                 userForm("name"),
