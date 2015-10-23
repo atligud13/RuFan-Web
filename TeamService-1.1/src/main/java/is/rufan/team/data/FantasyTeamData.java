@@ -28,8 +28,9 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
                         .withTableName("fantasyteams")
                         .usingGeneratedKeyColumns("id");
 
-        Map<String, Object> fTeamParameters = new HashMap<String, Object>(12);
+        Map<String, Object> fTeamParameters = new HashMap<String, Object>(13);
         fTeamParameters.put("userid", fantasyTeam.getUserId());
+        fTeamParameters.put("tournamentid", fantasyTeam.getTournament().getTournamentId());
         fTeamParameters.put("gkid", fantasyTeam.getgK().getPlayerId());
         fTeamParameters.put("d1id", fantasyTeam.getD1().getPlayerId());
         fTeamParameters.put("d2id", fantasyTeam.getD2().getPlayerId());
@@ -56,7 +57,7 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
     public void updateFantasyTeam(FantasyTeam fantasyTeam) throws ObjectNotFoundException
     {
         String sql = "update fantasyteams SET gkid = ?, d1id = ?, d2id = ?, d3id = ?, " +
-                "d4id = ?, m1id = ?, m2id = ?, m3id = ?, m4id = ?, f1id = ?, f2id = ?  where id = ?";
+                "d4id = ?, m1id = ?, m2id = ?, m3id = ?, m4id = ?, f1id = ?, f2id = ?, tournamentid = ?  where id = ?";
 
         try
         {
@@ -72,7 +73,8 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
             preparedStatement.setInt(9, fantasyTeam.getM4().getPlayerId());
             preparedStatement.setInt(10, fantasyTeam.getF1().getPlayerId());
             preparedStatement.setInt(11, fantasyTeam.getF2().getPlayerId());
-            preparedStatement.setInt(12, fantasyTeam.getId());
+            preparedStatement.setInt(12, fantasyTeam.getTournament().getTournamentId());
+            preparedStatement.setInt(13, fantasyTeam.getId());
 
             // execute update SQL statement
             preparedStatement.executeUpdate();

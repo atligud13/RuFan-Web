@@ -3,6 +3,7 @@ package is.rufan.team.data;
 import is.rufan.player.data.PlayerData;
 import is.rufan.player.data.PlayerDataGateway;
 import is.rufan.team.domain.FantasyTeam;
+import is.rufan.tournament.data.TournamentDataGateway;
 import is.ruframework.data.RuDataAccessFactory;
 import is.ruframework.domain.RuException;
 import org.springframework.jdbc.core.RowMapper;
@@ -17,14 +18,17 @@ public class FantasyTeamRowMapper implements RowMapper<FantasyTeam> {
     public FantasyTeam mapRow(ResultSet rs, int i) throws SQLException {
         RuDataAccessFactory factory;
         PlayerDataGateway playerDataGateway;
+        TournamentDataGateway tournamentDataGateway;
         FantasyTeam fantasyTeam;
 
         try
         {
             factory = RuDataAccessFactory.getInstance("teamdata.xml");
             playerDataGateway = (PlayerDataGateway) factory.getDataAccess("playerData");
+            tournamentDataGateway = (TournamentDataGateway) factory.getDataAccess("tournamentData");
             fantasyTeam = new FantasyTeam(rs.getInt("userid"));
             fantasyTeam.setId(rs.getInt("id"));
+            if(rs.getInt("tournamentid") > 0) fantasyTeam.setTournament(tournamentDataGateway.getTournament(rs.getInt("tournamentid")));
             if(rs.getInt("gkid") > 0) fantasyTeam.setgK(playerDataGateway.getPlayer(rs.getInt("gkid")));
             if(rs.getInt("d1id") > 0) fantasyTeam.setD1(playerDataGateway.getPlayer(rs.getInt("d1id")));
             if(rs.getInt("d2id") > 0) fantasyTeam.setD2(playerDataGateway.getPlayer(rs.getInt("d2id")));

@@ -3,6 +3,7 @@ create table fantasyteams
 (
   id int primary key NOT NULL IDENTITY ,
   userid int NOT NULL,
+  tournamentid int,
   gkid int,
   d1id int,
   d2id int,

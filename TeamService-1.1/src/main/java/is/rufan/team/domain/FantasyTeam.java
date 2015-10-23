@@ -1,6 +1,7 @@
 package is.rufan.team.domain;
 
 import is.rufan.player.domain.Player;
+import is.rufan.tournament.domain.Tournament;
 
 import java.util.List;
 
@@ -10,9 +11,8 @@ import java.util.List;
 public class FantasyTeam {
     private int id;
     private int userId;
-
+    private Tournament tournament;
     private Player gK;
-
     private Player d1;
     private Player d2;
     private Player d3;
@@ -23,11 +23,11 @@ public class FantasyTeam {
     private Player m4;
     private Player f1;
     private Player f2;
-
     public FantasyTeam(int userId)
     {
         this.id = 0;
         this.userId = userId;
+        this.tournament = new Tournament();
         this.gK = new Player();
         this.d1 = new Player();
         this.d2 = new Player();
@@ -45,8 +45,12 @@ public class FantasyTeam {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public Tournament getTournament() {
+        return this.tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 
     public Player getD4() {

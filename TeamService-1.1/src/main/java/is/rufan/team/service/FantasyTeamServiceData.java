@@ -7,6 +7,7 @@ import is.rufan.player.service.PlayerService;
 import is.rufan.player.service.PlayerServiceData;
 import is.rufan.team.data.FantasyTeamDataGateway;
 import is.rufan.team.domain.FantasyTeam;
+import is.rufan.tournament.domain.Tournament;
 import is.ruframework.data.RuDataAccessFactory;
 import is.ruframework.domain.RuException;
 import javassist.tools.rmi.ObjectNotFoundException;
@@ -33,12 +34,13 @@ public class FantasyTeamServiceData implements FantasyTeamService {
         try
         {
             FantasyTeamService fantasyTeamService = new FantasyTeamServiceData();
-
-            FantasyTeam f = new FantasyTeam(2);
+            /*
+            FantasyTeam f = new FantasyTeam(1);
             fantasyTeamService.addFantasyTeam(f);
-
+            */
             FantasyTeam fantasyTeam = new FantasyTeam(1);
             fantasyTeam.setId(2);
+            fantasyTeam.setTournament(new Tournament(1, "EPL $1000 GTD", true, new Date(), new Date(), "", 0, 0, 0));
             fantasyTeam.setgK(new Player(346029, "Michael", "Owen", 170, 80, new Date(), new Country(1, "England", "ENG"), 10, new Position(1, "Forward", "F", 0)));
             fantasyTeam.setD1(new Player(322494, "Atli", "Owen", 170, 80, new Date(), new Country(1, "England", "ENG"), 10, new Position(1, "Forward", "F", 0)));
             fantasyTeam.setD2(new Player(330263, "Arnar", "Owen", 170, 80, new Date(), new Country(1, "England", "ENG"), 10, new Position(1, "Forward", "F", 0)));
