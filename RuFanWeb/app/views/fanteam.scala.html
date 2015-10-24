@@ -1,20 +1,34 @@
 @(teams: List[is.rufan.team.domain.FantasyTeam])
 
 @main("Fantasy teams", nav = "fanteam") {
-    @for(team <- teams) {
-        <h4>Team for @team.getTournament().getName()</h4>
-        <ul>
-            @_player_info("Goalkeeper", team.getgK)
-            @_player_info("Defender 1", team.getD1)
-            @_player_info("Defender 2", team.getD2)
-            @_player_info("Defender 3", team.getD3)
-            @_player_info("Defender 4", team.getD4)
-            @_player_info("Midfielder 1", team.getM1)
-            @_player_info("Midfielder 2", team.getM2)
-            @_player_info("Midfielder 3", team.getM3)
-            @_player_info("Midfielder 4", team.getM4)
-            @_player_info("Forward 1", team.getF1)
-            @_player_info("Forward 2", team.getF2)
-        </ul>
-    }
+    <div class="container">
+        <div class="row">
+            @for(team <- teams) {
+                <div class="col-md-6">
+                    <h4>Team for @team.getTournament().getName()</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Pos</th>
+                                <th>Player</th>
+                            </thead>
+                            <tbody>
+                                @_player_info("Goalkeeper", team.getgK)
+                                @_player_info("Defender 1", team.getD1)
+                                @_player_info("Defender 2", team.getD2)
+                                @_player_info("Defender 3", team.getD3)
+                                @_player_info("Defender 4", team.getD4)
+                                @_player_info("Midfielder 1", team.getM1)
+                                @_player_info("Midfielder 2", team.getM2)
+                                @_player_info("Midfielder 3", team.getM3)
+                                @_player_info("Midfielder 4", team.getM4)
+                                @_player_info("Forward 1", team.getF1)
+                                @_player_info("Forward 2", team.getF2)
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 }
