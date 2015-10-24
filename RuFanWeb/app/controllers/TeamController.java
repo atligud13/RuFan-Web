@@ -10,6 +10,7 @@ import play.mvc.*;
 
 import views.html.fanteam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeamController extends Controller {
@@ -21,8 +22,15 @@ public class TeamController extends Controller {
     public Result getUserTeam() {
         User user = userService.getUserByUsername((String)session("username"));
         List<FantasyTeam> teams = teamService.getFantasyTeamsForUser(user.getId());
+        List<FantasyTeam> activeTeams = new ArrayList<>();
 
-        return ok(fanteam.render(teams));
+        for (FantasyTeam team : teams) {
+            if (team.getTournament().isActive()) {
+                activeTeams.add(team);
+            }
+        }
+
+        return ok(fanteam.render(activeTeams));
     }
 
 }

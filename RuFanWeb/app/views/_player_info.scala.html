@@ -1,0 +1,8 @@
+@(position: String, player: is.rufan.player.domain.Player)
+<li>@position:
+    @if(player.getPlayerId != 0) {
+        @player.getFirstName
+        @player.getLastName
+    } else {
+        (No player chosen)
+}</li>
