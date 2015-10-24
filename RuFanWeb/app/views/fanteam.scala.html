@@ -2,6 +2,6 @@
 
 @main("Fantasy team", nav = "fanteam") {
     @for(team <- teams) {
-        <p>@team.getgK().getFirstName()</p>
+        <p>@team.getTournament().getLeagueName()</p>
     }
 }
