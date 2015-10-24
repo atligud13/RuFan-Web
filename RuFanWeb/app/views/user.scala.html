@@ -1,4 +1,4 @@
-@(userForm: Form[is.rufan.user.domain.UserRegistration])
+@(userForm: Form[UserProfileViewModel])
 
 @import helper._
 
@@ -6,8 +6,6 @@
     @helper.form(action = routes.UserController.update()) {
         <fieldset>
             <legend>Account information</legend>
-            <input type="hidden" id="id" name="id" value="@userForm("id").value()" />
-            <input type="hidden" id="username" name="username" value="@userForm("username").value()" />
             @inputText(
                 userForm("name"),
                 '_label -> "Name",
@@ -33,6 +31,7 @@
         </fieldset>
         <fieldset>
             <legend>Favourite team</legend>
+            <input type="hidden" value="@userForm("favoriteTeamId").value()" id="favTeamId" />
             @tupleSelect(
                 userForm("favoriteTeamId"),
                 options(),
@@ -63,13 +62,13 @@
                     <span>Month: </span>
                     <select id="creditCardExpirationMonth" name="creditCardExpirationMonth">
                         @for(i <- 1 to 12) {
-                            <option value="@i">@i</option>
+                            <option value="@i" @if(userForm("creditCardExpirationMonth").value().toInt == i){selected="selected"}>@i</option>
                         }
                     </select>
                     <span>Year: </span>
                     <select id="creditCardExpirationYear" name="creditCardExpirationYear">
                         @for(i <- 2010 to 2030) {
-                            <option value="@i">@i</option>
+                            <option value="@i" @if(userForm("creditCardExpirationYear").value().toInt == i){selected="selected"}>@i</option>
                         }
                     </select>
                 </dd>
