@@ -56,7 +56,7 @@ public class UserController extends Controller
       User oldUser = service.getUserByUsername(newUser.getUsername());
 
       newUser.setPassword((newUser.getPassword().length() < 6 ? oldUser.getPassword() : newUser.getPassword()));
-      
+
       service.updateUser(newUser);
 
       return ok(user.render(filledForm));

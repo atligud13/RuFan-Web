@@ -1,0 +1,7 @@
+@(teams: List[is.rufan.team.domain.FantasyTeam])
+
+@main("Fantasy team", nav = "fanteam") {
+    @for(team <- teams) {
+        <p>@team.getgK().getFirstName()</p>
+    }
+}
