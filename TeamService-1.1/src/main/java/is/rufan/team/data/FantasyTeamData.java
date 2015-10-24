@@ -2,6 +2,7 @@ package is.rufan.team.data;
 
 import is.rufan.player.data.PlayerDataGateway;
 import is.rufan.team.domain.FantasyTeam;
+import is.rufan.tournament.data.TournamentDataGateway;
 import is.ruframework.data.RuData;
 import is.ruframework.data.RuDataAccessFactory;
 import is.ruframework.domain.RuException;
@@ -104,6 +105,7 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
         ArrayList<FantasyTeam> fantasyTeams = new ArrayList<FantasyTeam>();
         RuDataAccessFactory factory;
         PlayerDataGateway playerDataGateway;
+        TournamentDataGateway tournamentDataGateway;
 
         List<Map<String, Object>> rows = queryPosition.queryForList(sql, new Object[] { userId });
 
@@ -111,11 +113,13 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
         {
             factory = RuDataAccessFactory.getInstance("teamdata.xml");
             playerDataGateway = (PlayerDataGateway) factory.getDataAccess("playerData");
+            tournamentDataGateway = (TournamentDataGateway) factory.getDataAccess("tournamentData");
             for(Map r : rows)
             {
                 FantasyTeam fantasyTeam = new FantasyTeam((Integer) (r.get("userid")));
                 fantasyTeam.setId((Integer) (r.get("id")));
                 /* Here's where the fun part starts */
+                if((Integer)(r.get("tournamentid")) > 0) fantasyTeam.setTournament(tournamentDataGateway.getTournament((Integer)(r.get("tournamentid"))));
                 if((Integer)(r.get("gkid")) > 0) fantasyTeam.setgK(playerDataGateway.getPlayer((Integer)(r.get("gkid"))));
                 if((Integer)(r.get("d1id")) > 0) fantasyTeam.setD1(playerDataGateway.getPlayer((Integer) (r.get("d1id"))));
                 if((Integer)(r.get("d2id")) > 0) fantasyTeam.setD2(playerDataGateway.getPlayer((Integer) (r.get("d2id"))));
