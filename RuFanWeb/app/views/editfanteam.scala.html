@@ -1,0 +1,146 @@
+@(tournament: is.rufan.tournament.domain.Tournament)(fantasyTeam: is.rufan.team.domain.FantasyTeam)(teamForm: Form[is.rufan.team.domain.FantasyTeam])
+
+
+@main(tournament.getName(), nav="fantasyTeam") {
+  <div class="container">
+  <div class="row">
+  <div class="col-md-6">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <th>Pos</th>
+          <th>Player Info</th>
+          <th>Player Selection</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td> GK </td>
+            <td> @fantasyTeam.getgK().getFirstName @fantasyTeam.getgK().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> LB </td>
+            <td> @fantasyTeam.getD1().getFirstName @fantasyTeam.getD1().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> CB </td>
+            <td> @fantasyTeam.getD2().getFirstName @fantasyTeam.getD2().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> CB </td>
+            <td> @fantasyTeam.getD3().getFirstName @fantasyTeam.getD3().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> RB </td>
+            <td> @fantasyTeam.getD4().getFirstName @fantasyTeam.getD4().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> LW </td>
+            <td> @fantasyTeam.getM1().getFirstName @fantasyTeam.getM1().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> CM </td>
+            <td> @fantasyTeam.getM2().getFirstName @fantasyTeam.getM2().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> CM </td>
+            <td> @fantasyTeam.getM3().getFirstName @fantasyTeam.getM3().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> RW </td>
+            <td> @fantasyTeam.getM4().getFirstName @fantasyTeam.getM4().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> AM </td>
+            <td> @fantasyTeam.getF1().getFirstName @fantasyTeam.getF2().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td> AM </td>
+            <td> @fantasyTeam.getF2().getFirstName @fantasyTeam.getF2().getLastName() </td>
+            <td>
+              <select>
+                <option value="volvo">Tim Howard</option>
+                <option value="saab">Some other goalkeeper</option>
+                <option value="mercedes">uhhh</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <image class="img-responsive" src="@routes.Assets.versioned("/images/RuFan-FrontPageLogo.png")"/>
+  </div>
+  </div>
+  </div>
+}

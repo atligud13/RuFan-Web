@@ -4,7 +4,7 @@
 @main("Tournaments", nav="tournament") {
   <ul>
     @for(t <- tournaments) {
-      <li><a href="@routes.UserController.get()">@t.getName()</a> Starts: @t.getStartDate() Ends:
+      <li><a href="@routes.FantasyTeamController.get(t.getTournamentId().toInt)">@t.getName()</a> Starts: @t.getStartDate() Ends:
         @t.getEndDate() League: @t.getLeagueName() </li>
     }
   </ul>

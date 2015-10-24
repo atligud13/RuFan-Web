@@ -11,16 +11,11 @@ import is.rufan.user.domain.User;
 import is.rufan.user.domain.UserRegistration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import play.data.*;
 import play.mvc.*;
-import is.rufan.user.service.UserService;
 
 import views.html.tournaments;
 
 import java.util.ArrayList;
-import java.util.Date;
-
-import static play.data.Form.*;
 
 public class TournamentController extends Controller
 {
