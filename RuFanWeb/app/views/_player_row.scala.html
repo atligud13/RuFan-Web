@@ -1,0 +1,6 @@
+@(position: String, positionId: Integer, id: String, player: is.rufan.player.domain.Player)
+<tr class="player-row" data-id="@id" data-posId="@positionId">
+    <td> @position </td>
+    <td id="display-@id"> @player.getFirstName @player.getLastName </td>
+    <input type="hidden" id="player-@id" />
+</tr>

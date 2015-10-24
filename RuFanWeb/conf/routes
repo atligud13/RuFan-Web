@@ -19,6 +19,7 @@ POST       /fantasyteam             controllers.FantasyTeamController.update()
 
 # API
 GET        /api/teams               controllers.api.TeamController.getTeams()
+GET        /api/players/:teamId     controllers.api.PlayerController.getPlayers(teamId: Int)
 
 
 # Map static resources from the /public folder to the /assets URL path
