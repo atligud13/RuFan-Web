@@ -25,7 +25,6 @@ public class TeamController extends Controller {
         List<FantasyTeam> activeTeams = new ArrayList<>();
 
         for (FantasyTeam team : teams) {
-            System.out.println(team.getTournament().getName());
             if (team.getTournament().isActive()) {
                 activeTeams.add(team);
             }
