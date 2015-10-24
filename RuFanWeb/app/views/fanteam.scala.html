@@ -5,7 +5,10 @@
         <div class="row">
             @for(team <- teams) {
                 <div class="col-md-6">
-                    <h4>Team for @team.getTournament().getName()</h4>
+                    <h4>
+                        Team for @team.getTournament().getName() -
+                            <a href="@routes.FantasyTeamController.get(team.getTournament().getTournamentId)">edit</a>
+                    </h4>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
