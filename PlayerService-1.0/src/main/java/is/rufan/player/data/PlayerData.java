@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PlayerData extends RuData implements PlayerDataGateway
@@ -66,6 +67,15 @@ public class PlayerData extends RuData implements PlayerDataGateway
     Player player = queryPlayer.queryForObject(sql, new Object[] { playerid },
         new PlayerRowMapper());
     return player;
+  }
+
+  public List<Player> getPlayersByTeam(int teamId) {
+    String sql = "select * from players where teamid = ?";
+    JdbcTemplate queryPlayers = new JdbcTemplate(getDataSource());
+
+    List<Player> players = queryPlayers.query(sql, new Object[] { teamId }, new PlayerRowMapper());
+
+    return players;
   }
 }
 

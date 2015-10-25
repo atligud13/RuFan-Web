@@ -34,7 +34,7 @@ public class PlayerServiceData implements PlayerService
 
   public List<Player> getPlayers(int teamId)
   {
-    return null;
+    return playerDataGateway.getPlayersByTeam(teamId);
   }
 
   public List<Player> getPlayersByTeamAbbreviation(int leagueId, String teamAbbreviation)
