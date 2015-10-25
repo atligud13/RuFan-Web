@@ -3,23 +3,23 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET        /signup                  controllers.SignupController.blank()
-POST       /signup                  controllers.SignupController.signup()
-GET        /login                   controllers.LoginController.blank()
-POST       /login                   controllers.LoginController.login()
-GET        /logout                  controllers.LoginController.logout()
-GET        /user                    controllers.UserController.get()
-POST       /user                    controllers.UserController.update()
-GET        /tournaments             controllers.TournamentController.get()
-POST       /tournaments             controllers.TournamentController.post()
-GET        /fanteam                 controllers.TeamController.getUserTeam()
-GET        /fantasyteam             controllers.FantasyTeamController.get(tournamentId: Int)
-POST       /fantasyteam             controllers.FantasyTeamController.update()
+GET     /                               controllers.Application.index()
+GET        /signup                      controllers.SignupController.blank()
+POST       /signup                      controllers.SignupController.signup()
+GET        /login                       controllers.LoginController.blank()
+POST       /login                       controllers.LoginController.login()
+GET        /logout                      controllers.LoginController.logout()
+GET        /user                        controllers.UserController.get()
+POST       /user                        controllers.UserController.update()
+GET        /tournaments                 controllers.TournamentController.get()
+POST       /tournaments                 controllers.TournamentController.post()
+GET        /fanteam                     controllers.TeamController.getUserTeam()
+GET        /fantasyteam/:tournamentId   controllers.FantasyTeamController.get(tournamentId: Int)
+POST       /fantasyteam/:tournamentId   controllers.FantasyTeamController.update(tournamentId: Int)
 
 # API
-GET        /api/teams               controllers.api.TeamController.getTeams()
-GET        /api/players/:teamId     controllers.api.PlayerController.getPlayers(teamId: Int)
+GET        /api/teams                   controllers.api.TeamController.getTeams()
+GET        /api/players/:teamId         controllers.api.PlayerController.getPlayers(teamId: Int)
 
 
 # Map static resources from the /public folder to the /assets URL path

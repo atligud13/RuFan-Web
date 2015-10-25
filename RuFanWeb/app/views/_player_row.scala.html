@@ -2,5 +2,5 @@
 <tr class="player-row" data-id="@id" data-posId="@positionId">
     <td> @position </td>
     <td id="display-@id"> @player.getFirstName @player.getLastName </td>
-    <input type="hidden" id="player-@id" />
+    <input type="hidden" id="@id" name="@id" value="@player.getPlayerId" />
 </tr>

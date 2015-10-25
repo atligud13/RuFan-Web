@@ -8,8 +8,10 @@ import is.rufan.team.service.FantasyTeamService;
 import is.rufan.tournament.domain.Tournament;
 import is.rufan.tournament.service.TournamentService;
 import is.rufan.user.domain.User;
+import models.EditFantasyTeamViewModel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import play.Routes;
 import play.data.*;
 import play.mvc.*;
 import is.rufan.user.service.UserService;
@@ -22,19 +24,18 @@ import java.util.List;
 
 import static play.data.Form.*;
 
-public class FantasyTeamController extends Controller
-{
+public class FantasyTeamController extends Controller {
     protected ApplicationContext ctx = new FileSystemXmlApplicationContext("/conf/userapp.xml");
     protected UserService userService = (UserService) ctx.getBean("userService");
     protected TournamentService tournamentService = (TournamentService) ctx.getBean("tournamentService");
     protected FantasyTeamService fanTeamService = (FantasyTeamService) ctx.getBean("fantasyTeamService");
-    static Form<FantasyTeam> teamForm = form(FantasyTeam.class);
+    static Form<EditFantasyTeamViewModel> teamForm = form(EditFantasyTeamViewModel.class);
     Tournament tournament;
 
     public Result get(int tournamentId) {
         String username = session("username");
         User currentUser = userService.getUserByUsername(username);
-        tournament = (Tournament) tournamentService.getTournament(tournamentId);
+        tournament = tournamentService.getTournament(tournamentId);
         List<FantasyTeam> userTeams = fanTeamService.getFantasyTeamsForUser(currentUser.getId());
         FantasyTeam currentTeam = new FantasyTeam(currentUser.getId());
 
@@ -46,19 +47,19 @@ public class FantasyTeamController extends Controller
             }
         }
 
-        Form<FantasyTeam> newForm = teamForm.fill(currentTeam);
+        EditFantasyTeamViewModel model = new EditFantasyTeamViewModel(currentTeam);
 
-        return ok(editfanteam.render(tournament, currentTeam, newForm));
+        Form<EditFantasyTeamViewModel> newForm = teamForm.fill(model);
+
+        return ok(editfanteam.render(currentTeam, newForm));
     }
 
-    public Result post() {
-        return ok();
-    }
+    public Result update(int tournamentId) {
+        Form<EditFantasyTeamViewModel> filledForm = teamForm.bindFromRequest();
 
-    public Result update() {
-        Form<FantasyTeam> filledForm = teamForm.bindFromRequest();
-        FantasyTeam newTeam = filledForm.get();
+        System.out.println(filledForm);
 
-        return ok(editfanteam.render(tournament, newTeam, filledForm));
+        //return ok(editfanteam.render(newTeam, filledForm));
+        return redirect("/");
     }
 }

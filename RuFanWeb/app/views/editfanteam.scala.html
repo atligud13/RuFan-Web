@@ -1,30 +1,36 @@
-@(tournament: is.rufan.tournament.domain.Tournament)(fantasyTeam: is.rufan.team.domain.FantasyTeam)(teamForm: Form[is.rufan.team.domain.FantasyTeam])
+@(fantasyTeam: is.rufan.team.domain.FantasyTeam, teamForm: Form[EditFantasyTeamViewModel])
 
+@import helper._
 
-@main(tournament.getName(), nav="fantasyTeam") {
+@main(fantasyTeam.getTournament.getName, nav="fantasyTeam") {
   <div class="container">
   <div class="row">
   <div class="col-md-6">
     <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <th>Pos</th>
-          <th>Player Info</th>
-        </thead>
-        <tbody>
-          @_player_row("GK", 1, "gk", fantasyTeam.getgK)
-          @_player_row("LB", 4, "d1", fantasyTeam.getD1)
-          @_player_row("CB", 4, "d2", fantasyTeam.getD2)
-          @_player_row("CB", 4, "d3", fantasyTeam.getD3)
-          @_player_row("RB", 4, "d4", fantasyTeam.getD4)
-          @_player_row("LW", 3, "m1", fantasyTeam.getM1)
-          @_player_row("CM", 3, "m2", fantasyTeam.getM2)
-          @_player_row("CM", 3, "m3", fantasyTeam.getM3)
-          @_player_row("RW", 3, "m4", fantasyTeam.getM4)
-          @_player_row("AM", 2, "f1", fantasyTeam.getF1)
-          @_player_row("AM", 2, "f2", fantasyTeam.getF2)
-        </tbody>
-      </table>
+      @form(action = routes.FantasyTeamController.update(fantasyTeam.getTournament.getTournamentId)) {
+        <table class="table table-striped">
+          <thead>
+            <th>Pos</th>
+            <th>Player Info</th>
+          </thead>
+          <tbody>
+            @_player_row("GK", 1, "gk", fantasyTeam.getgK)
+            @_player_row("LB", 4, "d1", fantasyTeam.getD1)
+            @_player_row("CB", 4, "d2", fantasyTeam.getD2)
+            @_player_row("CB", 4, "d3", fantasyTeam.getD3)
+            @_player_row("RB", 4, "d4", fantasyTeam.getD4)
+            @_player_row("LW", 3, "m1", fantasyTeam.getM1)
+            @_player_row("CM", 3, "m2", fantasyTeam.getM2)
+            @_player_row("CM", 3, "m3", fantasyTeam.getM3)
+            @_player_row("RW", 3, "m4", fantasyTeam.getM4)
+            @_player_row("AM", 2, "f1", fantasyTeam.getF1)
+            @_player_row("AM", 2, "f2", fantasyTeam.getF2)
+          </tbody>
+        </table>
+        <div class="actions">
+          <input type="submit" class="btn btn-primary" value="Save">
+        </div>
+      }
     </div>
   </div>
   <div class="col-md-6">
