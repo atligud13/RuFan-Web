@@ -55,9 +55,17 @@ public class FantasyTeamController extends Controller {
     }
 
     public Result update(int tournamentId) {
+        User user = userService.getUserByUsername(session("username"));
         Form<EditFantasyTeamViewModel> filledForm = teamForm.bindFromRequest();
+        EditFantasyTeamViewModel model = teamForm.get();
+        FantasyTeam team;
 
-        System.out.println(filledForm);
+        // This is a new team
+        if (model.id == 0) {
+            team = new FantasyTeam(user.getId());
+        } else {
+            team = fanTeamService.getFantasyTeam(model.id);
+        }
 
         //return ok(editfanteam.render(newTeam, filledForm));
         return redirect("/");

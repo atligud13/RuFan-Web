@@ -8,6 +8,7 @@
   <div class="col-md-6">
     <div class="table-responsive">
       @form(action = routes.FantasyTeamController.update(fantasyTeam.getTournament.getTournamentId)) {
+        <input type="hidden" id="id" name="id" value="@fantasyTeam.getId" />
         <table class="table table-striped">
           <thead>
             <th>Pos</th>
