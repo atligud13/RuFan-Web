@@ -5,7 +5,7 @@
 @main(tournament.getName, nav="fantasyTeam") {
   <div class="container">
   <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-9">
     <div class="table-responsive">
       @if(teamForm.hasGlobalErrors) {
         <p style="color:red;">@teamForm.globalError.message</p>
@@ -15,7 +15,7 @@
         <table class="table table-striped">
           <thead>
             <th>Pos</th>
-            <th>Player Info</th>
+            <th>Player</th>
           </thead>
           <tbody>
             @_player_row("GK", 1, "gk", fantasyTeam.getgK)
@@ -37,7 +37,7 @@
       }
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3">
     <div id="selection-container">
       Team:
       <select id="teamSelect">
