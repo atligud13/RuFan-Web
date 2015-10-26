@@ -1,17 +1,21 @@
-@(fantasyTeam: is.rufan.team.domain.FantasyTeam, teamForm: Form[EditFantasyTeamViewModel])
+@(tournament: is.rufan.tournament.domain.Tournament, fantasyTeam: is.rufan.team.domain.FantasyTeam, teamForm: Form[EditFantasyTeamViewModel])
 
 @import helper._
 
-@main(fantasyTeam.getTournament.getName, nav="fantasyTeam") {
+@main(tournament.getName, nav="fantasyTeam") {
   <div class="container">
   <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-9">
     <div class="table-responsive">
-      @form(action = routes.FantasyTeamController.update(fantasyTeam.getTournament.getTournamentId)) {
-        <table class="table">
+      @if(teamForm.hasGlobalErrors) {
+        <p style="color:red;">@teamForm.globalError.message</p>
+      }
+      <table class="table">
+      @form(action = routes.FantasyTeamController.update(tournament.getTournamentId)) {
+        <input type="hidden" id="id" name="id" value="@fantasyTeam.getId" />
           <thead>
             <th>Pos</th>
-            <th>Player Info</th>
+            <th>Player</th>
           </thead>
           <tbody>
             @_player_row("GK", 1, "gk", fantasyTeam.getgK)
@@ -33,7 +37,7 @@
       }
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3">
     <div id="selection-container">
       Team:
       <select id="teamSelect">

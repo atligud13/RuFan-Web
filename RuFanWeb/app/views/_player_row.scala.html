@@ -1,6 +1,12 @@
 @(position: String, positionId: Integer, id: String, player: is.rufan.player.domain.Player)
 <tr class="player-row" data-id="@id" data-posId="@positionId">
     <td> @position </td>
-    <td id="display-@id"> @player.getFirstName @player.getLastName </td>
-    <input type="hidden" id="@id" name="@id" value="@player.getPlayerId" />
+    <td id="display-@id">
+        @if(player != null && player.getPlayerId != 0) {
+            @player.getFirstName @player.getLastName
+        } else {
+            (No player selected)
+        }
+    </td>
+    <input type="hidden" id="@id" name="@id" value="@if(player != null && player.getPlayerId != 0) {player.getPlayerId} else {0}" />
 </tr>

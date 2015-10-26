@@ -10,23 +10,23 @@
                             <a href="@routes.FantasyTeamController.get(team.getTournament().getTournamentId)">edit</a>
                     </h4>
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table">
                             <thead>
                                 <th>Pos</th>
                                 <th>Player</th>
                             </thead>
                             <tbody>
-                                @_player_info("Goalkeeper", team.getgK)
-                                @_player_info("Defender 1", team.getD1)
-                                @_player_info("Defender 2", team.getD2)
-                                @_player_info("Defender 3", team.getD3)
-                                @_player_info("Defender 4", team.getD4)
-                                @_player_info("Midfielder 1", team.getM1)
-                                @_player_info("Midfielder 2", team.getM2)
-                                @_player_info("Midfielder 3", team.getM3)
-                                @_player_info("Midfielder 4", team.getM4)
-                                @_player_info("Forward 1", team.getF1)
-                                @_player_info("Forward 2", team.getF2)
+                                @_player_info("GK", team.getgK)
+                                @_player_info("LB", team.getD1)
+                                @_player_info("CB", team.getD2)
+                                @_player_info("CB", team.getD3)
+                                @_player_info("RB", team.getD4)
+                                @_player_info("LW", team.getM1)
+                                @_player_info("CM", team.getM2)
+                                @_player_info("CM", team.getM3)
+                                @_player_info("RW", team.getM4)
+                                @_player_info("AM", team.getF1)
+                                @_player_info("AM", team.getF2)
                             </tbody>
                         </table>
                     </div>
