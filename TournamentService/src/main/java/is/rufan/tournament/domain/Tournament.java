@@ -15,6 +15,15 @@ public class Tournament {
     protected int maxEntries;
     protected String leagueName;
     protected int prize;
+    protected boolean winnerSelected;
+
+    public boolean isWinnerSelected() {
+        return winnerSelected;
+    }
+
+    public void setWinnerSelected(boolean winnerSelected) {
+        this.winnerSelected = winnerSelected;
+    }
 
     public Tournament(){}
 

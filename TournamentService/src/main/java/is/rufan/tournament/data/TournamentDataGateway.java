@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface TournamentDataGateway {
     void addTournament(Tournament tournament);
+    void setWinnerSelected(int tournamentId);
     Tournament getTournament(int tournamentId);
     List<Tournament> getTournaments();
     List<Tournament> getActiveTournaments();
+    void addTournamentResult(int teamId, int score);
 }

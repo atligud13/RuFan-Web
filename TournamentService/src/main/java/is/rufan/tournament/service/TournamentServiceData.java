@@ -50,7 +50,7 @@ public class TournamentServiceData implements TournamentService {
             Date endDate4 = cal.getTime();
             Date endDate5 = cal.getTime();
 
-            /* Creating mock tournament */
+            /* Creating tournaments */
             tournaments.add(new Tournament(3, "EPL $1000 GTD", true,
                     startDate1, endDate1, "English Premier League", 100,
                     10, 1000));
@@ -96,5 +96,15 @@ public class TournamentServiceData implements TournamentService {
     public void addTournament(Tournament tournament)
     {
         tournamentDataGateway.addTournament(tournament);
+    }
+
+    public void setWinnerSelected(int tournamentId)
+    {
+        tournamentDataGateway.setWinnerSelected(tournamentId);
+    }
+
+    public void addTournamentResult(int teamId, int score)
+    {
+        tournamentDataGateway.addTournamentResult(teamId, score);
     }
 }

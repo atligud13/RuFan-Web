@@ -6,6 +6,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +43,25 @@ public class TournamentData extends RuData implements TournamentDataGateway {
         }
     }
 
+    public void setWinnerSelected(int tournamentId) {
+        String sql = "update tournaments SET winnerselected = 1  where id = ?";
+
+        try
+        {
+            PreparedStatement preparedStatement = getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, tournamentId);
+
+            // execute update SQL statement
+            preparedStatement.executeUpdate();
+
+            System.out.println("Tournament status set to winner selected!");
+        }
+        catch(SQLException e)
+        {
+            log.warning("Could not set winner selected");
+        }
+    }
+
     public Tournament getTournament(int tournamentId) {
         String sql = "select * from tournaments where id = ?";
         JdbcTemplate queryT = new JdbcTemplate(getDataSource());
@@ -69,5 +90,27 @@ public class TournamentData extends RuData implements TournamentDataGateway {
                 new TournamentRowMapper());
 
         return tournaments;
+    }
+
+    public void addTournamentResult(int teamId, int score)
+    {
+        SimpleJdbcInsert insertTournamentResult =
+                new SimpleJdbcInsert(getDataSource())
+                        .withTableName("tournamentresults")
+                        .usingGeneratedKeyColumns("id");
+
+        Map<String, Object> tParameters = new HashMap<String, Object>(2);
+        tParameters.put("fantasyteamid", teamId);
+        tParameters.put("score", score);
+
+        try
+        {
+            insertTournamentResult.execute(tParameters);
+        }
+        catch(DataIntegrityViolationException e)
+        {
+            log.warning("Something went wrong when inserting tournament result");
+            log.warning(e.toString());
+        }
     }
 }

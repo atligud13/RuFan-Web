@@ -11,8 +11,9 @@ import java.util.List;
 public interface FantasyTeamDataGateway
 {
     void addFantasyTeam(FantasyTeam fantasyTeam);
-    void updateFantasyTeam(FantasyTeam fantasyTeam) throws ObjectNotFoundException;
+    void updateFantasyTeam(FantasyTeam fantasyTeam);
     FantasyTeam getFantasyTeam(int id);
     List<FantasyTeam> getFantasyTeamsForUser(int userId);
+    List<FantasyTeam> getFantasyTeamsForTournament(int tournamentId);
     List<FantasyTeam> getAllFantasyTeams();
 }

@@ -55,7 +55,7 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
         }
     }
 
-    public void updateFantasyTeam(FantasyTeam fantasyTeam) throws ObjectNotFoundException
+    public void updateFantasyTeam(FantasyTeam fantasyTeam)
     {
         String sql = "update fantasyteams SET gkid = ?, d1id = ?, d2id = ?, d3id = ?, " +
                 "d4id = ?, m1id = ?, m2id = ?, m3id = ?, m4id = ?, f1id = ?, f2id = ?, tournamentid = ?  where id = ?";
@@ -85,7 +85,6 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
         catch(SQLException e)
         {
             log.warning("Could not update fantasy team");
-            throw new ObjectNotFoundException("FANTASY_TEAM_NOT_FOUND");
         }
     }
 
@@ -96,6 +95,16 @@ public class FantasyTeamData extends RuData implements FantasyTeamDataGateway {
         FantasyTeam fantasyTeam = queryFantasyTeam.queryForObject(sql, new Object[] { id },
                 new FantasyTeamRowMapper());
         return fantasyTeam;
+    }
+
+    public List<FantasyTeam> getFantasyTeamsForTournament(int tournamentId)
+    {
+        String sql = "select * from fantasyteams where tournamentid = ?";
+        JdbcTemplate queryTeams = new JdbcTemplate(getDataSource());
+
+        List<FantasyTeam> fantasyTeams = queryTeams.query(sql, new Object[]{tournamentId}, new FantasyTeamRowMapper());
+
+        return fantasyTeams;
     }
 
     public List<FantasyTeam> getFantasyTeamsForUser(int userId)

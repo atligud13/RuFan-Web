@@ -7,6 +7,7 @@ import is.rufan.player.service.PlayerService;
 import is.rufan.player.service.PlayerServiceData;
 import is.rufan.team.data.FantasyTeamDataGateway;
 import is.rufan.team.domain.FantasyTeam;
+import is.rufan.team.domain.Team;
 import is.rufan.tournament.domain.Tournament;
 import is.ruframework.data.RuDataAccessFactory;
 import is.ruframework.domain.RuException;
@@ -34,10 +35,16 @@ public class FantasyTeamServiceData implements FantasyTeamService {
         try
         {
             FantasyTeamService fantasyTeamService = new FantasyTeamServiceData();
+            List<FantasyTeam> teams = fantasyTeamService.getFantasyTeamsForTournament(1);
+            for(FantasyTeam t : teams)
+            {
+                System.out.print(t.getgK().getFirstName());
+            }
+
+
             /*
             FantasyTeam f = new FantasyTeam(1);
             fantasyTeamService.addFantasyTeam(f);
-            */
             FantasyTeam fantasyTeam = new FantasyTeam(1);
             fantasyTeam.setId(2);
             fantasyTeam.setTournament(new Tournament(1, "EPL $1000 GTD", true, new Date(), new Date(), "", 0, 0, 0));
@@ -62,6 +69,7 @@ public class FantasyTeamServiceData implements FantasyTeamService {
             {
                 System.out.println("Object not found exception thrown when updating fantasy teams");
             }
+            */
 
         }
         catch(RuException e)
@@ -74,15 +82,8 @@ public class FantasyTeamServiceData implements FantasyTeamService {
         fantasyTeamDataGateway.addFantasyTeam(fantasyTeam);
     }
 
-    public void updateFantasyTeam(FantasyTeam fantasyTeam) throws ObjectNotFoundException {
-        try
-        {
-            fantasyTeamDataGateway.updateFantasyTeam(fantasyTeam);
-        }
-        catch(ObjectNotFoundException e)
-        {
-            throw e;
-        }
+    public void updateFantasyTeam(FantasyTeam fantasyTeam) {
+        fantasyTeamDataGateway.updateFantasyTeam(fantasyTeam);
     }
 
     public FantasyTeam getFantasyTeam(int id) {
@@ -91,6 +92,10 @@ public class FantasyTeamServiceData implements FantasyTeamService {
 
     public List<FantasyTeam> getFantasyTeamsForUser(int userId) {
         return fantasyTeamDataGateway.getFantasyTeamsForUser(userId);
+    }
+
+    public List<FantasyTeam> getFantasyTeamsForTournament(int tournamentId) {
+        return fantasyTeamDataGateway.getFantasyTeamsForTournament(tournamentId);
     }
 
     public List<FantasyTeam> getAllFantasyTeams() {

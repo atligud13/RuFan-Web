@@ -9,5 +9,6 @@ create table tournaments
   entryfee int,
   maxentries int,
   leaguename varchar(80),
-  prize int
+  prize int,
+  winnerselected bit
 );

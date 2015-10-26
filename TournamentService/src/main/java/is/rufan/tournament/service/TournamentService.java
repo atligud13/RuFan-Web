@@ -12,4 +12,6 @@ public interface TournamentService {
     List<Tournament> getTournaments();
     List<Tournament> getActiveTournaments();
     void addTournament(Tournament tournament);
+    void setWinnerSelected(int tournamentId);
+    void addTournamentResult(int teamId, int score);
 }
