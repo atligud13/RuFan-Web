@@ -2,3 +2,39 @@
     background-color: #080808;
     width: 100px !important;
 }
+
+body {
+    background-size: cover;
+    background-position: center top;
+    display: block;
+    position: relative;
+    color: white !important;
+    background-image: url("../images/background-image.jpg");
+}
+
+ul {
+    list-style: none;
+    padding-left: 15px;
+}
+
+#jumbo {
+    background-color: transparent;
+}
+
+legend {
+    color: white;
+}
+
+.success {
+    background-color: #a6e1ec;
+    opacity: 0.7 !important;
+}
+
+.success td {
+    opacity: 1;
+    color: black !important;
+}
+
+input, select {
+    color: black;
+}

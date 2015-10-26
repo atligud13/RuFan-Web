@@ -14,8 +14,8 @@ public class TournamentRowMapper implements RowMapper<Tournament> {
         Tournament tournament = new Tournament();
         tournament.setTournamentId(resultSet.getInt("id"));
         tournament.setActive(resultSet.getBoolean("active"));
-        tournament.setStartDate(resultSet.getTime("startdate"));
-        tournament.setEndDate(resultSet.getTime("enddate"));
+        tournament.setStartDate(resultSet.getDate("startdate"));
+        tournament.setEndDate(resultSet.getDate("enddate"));
         tournament.setEntryFee(resultSet.getInt("entryfee"));
         tournament.setMaxEntries(resultSet.getInt("maxentries"));
         tournament.setLeagueName(resultSet.getString("leaguename"));
