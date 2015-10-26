@@ -64,8 +64,8 @@ public class PlayerData extends RuData implements PlayerDataGateway
   {
     String sql = "select * from players where playerid = ?";
     JdbcTemplate queryPlayer= new JdbcTemplate(getDataSource());
-    Player player = queryPlayer.queryForObject(sql, new Object[] { playerid },
-        new PlayerRowMapper());
+    Player player = queryPlayer.queryForObject(sql, new Object[]{playerid},
+            new PlayerRowMapper());
     return player;
   }
 
@@ -73,7 +73,19 @@ public class PlayerData extends RuData implements PlayerDataGateway
     String sql = "select * from players where teamid = ?";
     JdbcTemplate queryPlayers = new JdbcTemplate(getDataSource());
 
-    List<Player> players = queryPlayers.query(sql, new Object[] { teamId }, new PlayerRowMapper());
+    List<Player> players = queryPlayers.query(sql, new Object[]{teamId}, new PlayerRowMapper());
+
+    return players;
+  }
+
+  public List<Player> getPlayersByTeamAndPosition(int teamId, int posId) {
+    String sql = "select * from players " +
+            "left join playerpositions on players.playerid = playerpositions.playerid " +
+            "where players.teamid = ? and playerpositions.positionid = ?";
+
+    JdbcTemplate queryPlayers = new JdbcTemplate(getDataSource());
+
+    List<Player> players = queryPlayers.query(sql, new Object[]{teamId, posId}, new PlayerRowMapper());
 
     return players;
   }
