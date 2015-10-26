@@ -27,6 +27,22 @@ public class PlayerServiceData implements PlayerService
     countryDataGateway = (CountryDataGateway) factory.getDataAccess("countryData");
   }
 
+  public static void main(String[] args) {
+    try
+    {
+      PlayerService playerService = new PlayerServiceData();
+      List<Player> players = playerService.getPlayersByPosition(6140, 1);
+      for(Player p : players)
+      {
+        System.out.println(p.getFirstName());
+      }
+    }
+    catch(RuException e)
+    {
+      System.out.println("Something went wrong mate");
+    }
+  }
+
   public Player getPlayer(int playerId)
   {
     return playerDataGateway.getPlayer(playerId);
@@ -35,6 +51,10 @@ public class PlayerServiceData implements PlayerService
   public List<Player> getPlayers(int teamId)
   {
     return playerDataGateway.getPlayersByTeam(teamId);
+  }
+
+  public List<Player> getPlayersByPosition(int teamId, int posId) {
+    return playerDataGateway.getPlayersByTeamAndPosition(teamId, posId);
   }
 
   public List<Player> getPlayersByTeamAbbreviation(int leagueId, String teamAbbreviation)
