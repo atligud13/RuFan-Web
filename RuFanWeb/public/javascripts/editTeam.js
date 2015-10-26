@@ -32,10 +32,11 @@ var initSelector = function(id, posId) {
 var onTeamChange = function() {
     var selected = $("#teamSelect option:selected");
     var teamId = selected.val();
+    var posId = $("#selection-container").data("posid");
     var players = $("#playerSelect");
     players.empty().append('<option value="-1">-- Select a player --<\/option>');
 
-    $.get("/api/players/" + teamId, function(data) {
+    $.get("/api/players/" + teamId + "?posId=" + posId, function(data) {
        data.forEach(function(player) {
            players.append(
                '<option value="' + player.playerId + '">' + player.firstName + " " + player.lastName + '<\/option>'

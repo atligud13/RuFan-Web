@@ -13,8 +13,14 @@ public class PlayerController extends Controller {
     protected ApplicationContext ctx = new FileSystemXmlApplicationContext("/conf/userapp.xml");
     protected PlayerService service = (PlayerService) ctx.getBean("playerService");
 
-    public Result getPlayers(int teamId) {
-        List<Player> players = service.getPlayers(teamId);
+    public Result getPlayers(int teamId, int posId) {
+        List<Player> players;
+
+        if (posId == 0) {
+            players = service.getPlayers(teamId);
+        } else {
+            players = service.getPlayersByPosition(teamId, posId);
+        }
 
         return ok(Json.toJson(players));
     }
